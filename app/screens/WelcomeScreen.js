@@ -29,7 +29,7 @@ function WelcomeScreen({ navigation }) {
         <MyButton
           title="Continue without an account"
           color='tomato'
-          /* onPress={() => navigation.navigate(routes.REGISTER)} */
+          onPress={() => navigation.navigate('Products')} 
         />
       </View>
     </ImageBackground>
