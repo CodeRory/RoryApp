@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { SafeAreaView, View, FlatList, StyleSheet, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import Constants from 'expo-constants';
 import { TouchableOpacity } from 'react-native';
@@ -9,7 +9,7 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 import colors from '../config/colors';
 
-const dataAccount = [
+const initialMessages = [
   {
     id: '1',
     title: 'Marta Ricci',
@@ -49,40 +49,68 @@ function ListItemDeleteAction({ onPress }) {
         </TouchableWithoutFeedback>
     )
 } 
+
+/* function ListItemSeparator() {
+    return (
+        <View style={styles.separator} />
+    )
+} */
+
 export default function MyAccount({ navigation }) {
-  return (
+    const [messages, setMessages] = useState(initialMessages);
+    const [refreshing, setRefreshing] = useState(false);
+
+    const handleDelete = (message) => {
+        // Delete the message from messages
+        setMessages(messages.filter((m) => m.id !== message.id));
+      };
+  
+  
+  
+    return (
     <View style={styles.container} >
       <FlatList
-        data={dataAccount}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) =>         
-            (<Swipeable style={styles.containerSwipeable} renderRightActions={() => (
-                <ListItemDeleteAction onPress={() => handleDelete(item)} />
-                    )}>
-                    <TouchableOpacity onPress={() => console.log('hey')} style={styles.productInfo}> 
-                        <View style={styles.avatarAndText}>
-                            <Image style={styles.avatar} source={item.avatar}/>  
-                            <Item title={item.title} price={item.price}  />                          
-                        </View>               
-                        <View style={styles.containerIcons}>
-                            <MaterialCommunityIcons 
-                            color={colors.medium}                        
-                            name='chevron-left' 
-                            size={25} 
-                            style={styles.chevron}
-                            />
-                            <MaterialCommunityIcons 
-                            color={colors.medium}                        
-                            name='trash-can' 
-                            size={25} 
-                            style={styles.chevron}
-                            />
-                        </View>
-                    </TouchableOpacity>
-                </Swipeable>)
-        
-        }
-      /> 
+            /* ItemSeparatorComponent={ListItemSeparator} */
+            data={messages}
+            keyExtractor={(message) => message.id.toString()}
+            renderItem={({ item }) =>         
+                (<Swipeable style={styles.containerSwipeable} renderRightActions={() => (
+                    <ListItemDeleteAction onPress={() => handleDelete(item)} />
+                        )}>
+                        <TouchableOpacity onPress={() => console.log('hey')} style={styles.productInfo}> 
+                            <View style={styles.avatarAndText}>
+                                <Image style={styles.avatar} source={item.avatar}/>  
+                                <Item title={item.title} price={item.price}  />                          
+                            </View>               
+                            <View style={styles.containerIcons}>
+                                <MaterialCommunityIcons 
+                                color={colors.medium}                        
+                                name='chevron-left' 
+                                size={25} 
+                                style={styles.chevron}
+                                />
+                                <MaterialCommunityIcons 
+                                color={colors.medium}                        
+                                name='trash-can' 
+                                size={25} 
+                                style={styles.chevron}
+                                />
+                            </View>
+                        </TouchableOpacity>
+                    </Swipeable>)
+            }
+            refreshing={refreshing}
+            onRefresh={() => {
+                setMessages([
+                    {
+                    id: '2',
+                    title: 'Miguel García',
+                    price: 'Would you accept 500 bucks?',
+                    avatar: require('../assets/avatar7.png'),
+                    },
+                ]);
+                }}
+        /> 
     </View>
   );
 }
@@ -107,7 +135,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: Constants.statusBarHeight,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: colors.white,
     display: 'flex',
     flexDirection: 'row',
     
@@ -139,6 +167,11 @@ const styles = StyleSheet.create({
     marginRight: 25,
 
   },
+  separator: {
+    width: '100%', 
+    height: 1, 
+    backgroundColor: colors.medium,
+},
   title: {
     fontSize: 18,
     color: colors.black,
