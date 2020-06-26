@@ -52,7 +52,7 @@ function Item({ title, price }) {
   );
 }
 
-export default function ProductsScreen({ navigation }) {
+export default function ProductsScreen({ navigation, route }) {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -63,7 +63,7 @@ export default function ProductsScreen({ navigation }) {
         (<React.Fragment>
             <Image style={styles.image} source={item.image}/>
             <View style={styles.productInfo}>
-              <TouchableOpacity onPress={() => console.log('hey')}>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductsDetails', item)}>
                   <Item title={item.title} price={item.price}  />  
               </TouchableOpacity>
               <TouchableOpacity>
