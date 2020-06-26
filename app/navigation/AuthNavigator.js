@@ -13,6 +13,8 @@ import AddProduct from '../screens/AddProduct';
 import MyAccount from '../screens/MyAccount';
 import colors from '../config/colors';
 
+import FeedProducts from '../navigation/FeedProducts';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -24,7 +26,7 @@ const TabNavigator = () => (
             headerShown: false
 
         }}>
-        <Tab.Screen name='Products' component={ProductsScreen} options={{
+        <Tab.Screen name='Products' component={FeedProducts} options={{
             tabBarIcon: ()=> <MaterialCommunityIcons name="guitar-acoustic" size={24} color="black" />}} />
         <Tab.Screen name='Add' component={AddProduct} options={{
             tabBarIcon: ()=> <MaterialIcons name="add-circle-outline" size={24} color="black" />}}/>

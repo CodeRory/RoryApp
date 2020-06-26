@@ -15,20 +15,14 @@ import MyAccount from './app/screens/MyAccount';
 
 import AddProduct from './app/screens/AddProduct';
 
-import ProductsDetails from './app/screens/Details/ProductsDetails';
-
-
-
 
 
 export default function App() {
   
-  
-  
   return (
     <NavigationContainer>
      
-      <ProductsScreen />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
