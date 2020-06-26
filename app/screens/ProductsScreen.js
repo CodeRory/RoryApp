@@ -56,6 +56,7 @@ function ProductsScreen({ navigation }) {
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
+            avatar={item.avatar}
             onPress={() => navigation.navigate(routes.PRODUCTS_DETAILS, item)}
           />
         )}
@@ -81,78 +82,8 @@ export default ProductsScreen;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, Image } from 'react-native';
-import Constants from 'expo-constants';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
-import colors from '../config/colors';
-
-const listings = [
-  {
-    id: '1',
-    title: 'Acoustic guitar of 1991',
-    price: '900$',
-    image: require('../assets/product1.jpg'),
-    avatar: require('../assets/avatar1.jpg'),
-  },
-  {
-    id: '2',
-    title: 'Big electric guitar',
-    price: '3500$',
-    image: require('../assets/product2.jpg'),
-    avatar: require('../assets/avatar2.png'),
-  },
-  {
-    id: '3',
-    title: 'Pre-owned piano',
-    price: '2750$',
-    image: require('../assets/product3.jpg'),
-    avatar: require('../assets/avatar3.jpg'),
-  },
-  {
-    id: '4',
-    title: 'Two cymbals and one snare',
-    price: '780$',
-    image: require('../assets/product4.jpg'),
-    avatar: require('../assets/avatar4.jpg'),
-  },
-  {
-    id: '5',
-    title: 'My old sax',
-    price: '1250$',
-    image: require('../assets/product5.jpg'),
-    avatar: require('../assets/avatar5.png'),
-  },
-];
-
-function Item({ title, price }) {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.price}>{price}</Text>
-    </View>
-  );
-}
+/* 
+    
 
 export default function ProductsScreen({ navigation, onPress1, onPress2 }) {
   return (
