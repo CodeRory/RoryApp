@@ -1,4 +1,135 @@
 import React, { useState } from "react";
+import { FlatList, StyleSheet, View, TouchableWithoutFeedback } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+import colors from '../config/colors';
+
+import ListItem from '../components/ListItem'
+
+
+const initialMessages = [
+  {
+    id: '1',
+    title: 'Marta Ricci',
+    description: 'Is your guitar still available?',
+    image: require('../assets/avatar6.png'),
+  },
+  {
+    id: '2',
+    title: 'Miguel García',
+    description: 'Would you accept 500 bucks?',
+    image: require('../assets/avatar7.png'),
+  },
+  {
+    id: '3',
+    title: 'Fredrika Larsson',
+    description: 'Could you send me more photos?',
+    image: require('../assets/avatar8.png'),
+  },
+ 
+];
+
+function ListItemDeleteAction({ onPress }) {
+  return (
+      <TouchableWithoutFeedback onPress={onPress}>
+          <View style={styles.container}>
+              <MaterialCommunityIcons name='trash-can' size={35} color={colors.medium}  />
+          </View>        
+      </TouchableWithoutFeedback>
+  )
+} 
+function MyAccount(props) {
+  const [messages, setMessages] = useState(initialMessages);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleDelete = (message) => {
+    // Delete the message from messages
+    setMessages(messages.filter((m) => m.id !== message.id));
+  };
+
+  return (
+    <View>
+      <FlatList
+        style={styles.eachMessage}
+        data={messages}
+        keyExtractor={(message) => message.id.toString()}
+        renderItem={({ item }) => (
+          <ListItem
+            title={item.title}
+            subTitle={item.description}
+            image={item.image}
+            onPress={() => console.log("Message selected", item)}
+            renderRightActions={() => (
+              <ListItemDeleteAction onPress={() => handleDelete(item)} />
+            )}
+          />
+        )}
+        
+        refreshing={refreshing}
+        onRefresh={() => {
+          setMessages([
+            {
+              id: '2',
+              title: 'Miguel García',
+              description: 'Would you accept 500 bucks?',
+              image: require('../assets/avatar7.png'),
+            },
+          ]);
+        }}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    alignSelf: 'center',
+
+  },
+  eachMessage: {
+    marginTop: 40,
+
+  }
+});
+
+export default MyAccount;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import React, { useState } from "react";
 import { SafeAreaView, View, FlatList, StyleSheet, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import Constants from 'expo-constants';
 import { TouchableOpacity } from 'react-native';
@@ -50,11 +181,7 @@ function ListItemDeleteAction({ onPress }) {
     )
 } 
 
-/* function ListItemSeparator() {
-    return (
-        <View style={styles.separator} />
-    )
-} */
+
 
 export default function MyAccount({ navigation }) {
     const [messages, setMessages] = useState(initialMessages);
@@ -69,8 +196,7 @@ export default function MyAccount({ navigation }) {
   
     return (
     <View style={styles.container} >
-      <FlatList
-            /* ItemSeparatorComponent={ListItemSeparator} */
+      <FlatList           
             data={messages}
             keyExtractor={(message) => message.id.toString()}
             renderItem={({ item }) =>         
@@ -81,7 +207,8 @@ export default function MyAccount({ navigation }) {
                             <View style={styles.avatarAndText}>
                                 <Image style={styles.avatar} source={item.avatar}/>  
                                 <Item title={item.title} price={item.price}  />                          
-                            </View>               
+                            </View> 
+                                          
                             <View style={styles.containerIcons}>
                                 <MaterialCommunityIcons 
                                 color={colors.medium}                        
@@ -143,6 +270,7 @@ const styles = StyleSheet.create({
   containerIcons: {
     display: 'flex',
     flexDirection: 'row',
+    
 
   },
 
@@ -162,18 +290,13 @@ const styles = StyleSheet.create({
   productInfo: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: 25,
+    /* justifyContent: 'space-between', */
+    /* marginLeft: 25,
     marginRight: 25,
 
   },
-  separator: {
-    width: '100%', 
-    height: 1, 
-    backgroundColor: colors.medium,
-},
   title: {
     fontSize: 18,
     color: colors.black,
   },
-});
+});  */

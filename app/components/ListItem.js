@@ -29,11 +29,7 @@ function ListItem({
               </Text>
             )}
           </View>
-          <MaterialCommunityIcons
-            color={colors.medium}
-            name="chevron-right"
-            size={25}
-          />
+          
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -61,7 +57,7 @@ const styles = StyleSheet.create({
     color: colors.medium,
   },
   title: {
-    fontWeight: "500",
+    fontWeight: "800",
   },
 });
 

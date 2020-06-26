@@ -14,6 +14,8 @@ const listings = [
     price: '900$',
     image: require('../assets/product1.jpg'),
     avatar: require('../assets/avatar1.jpg'),
+    name: 'Ross Geller',
+    subTitle: '5 Deals'
   },
   {
     id: '2',
@@ -21,6 +23,8 @@ const listings = [
     price: '3500$',
     image: require('../assets/product2.jpg'),
     avatar: require('../assets/avatar2.png'),
+    name: 'Lisa Simpson',
+    subTitle: '2 Deals'
   },
   {
     id: '3',
@@ -28,6 +32,8 @@ const listings = [
     price: '2750$',
     image: require('../assets/product3.jpg'),
     avatar: require('../assets/avatar3.jpg'),
+    name: 'Yeni Li',
+    subTitle: '10 Deals'
   },
   {
     id: '4',
@@ -35,6 +41,8 @@ const listings = [
     price: '780$',
     image: require('../assets/product4.jpg'),
     avatar: require('../assets/avatar4.jpg'),
+    name: 'Jurgen Klopp',
+    subTitle: '1 Deals'
   },
   {
     id: '5',
@@ -42,6 +50,8 @@ const listings = [
     price: '1250$',
     image: require('../assets/product5.jpg'),
     avatar: require('../assets/avatar5.png'),
+    name: 'Miles Davis',
+    subTitle: '6 Deals'
   },
 ];
 
