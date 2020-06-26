@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const FeedProducts = () => (
     <Stack.Navigator>
         <Stack.Screen name='Products' component={ProductsScreen} />
-        <Stack.Screen name='ProductsDetail' component={ProductsScreenDetails} />
+        <Stack.Screen name='ProductsScreenDetails' component={ProductsScreenDetails} />
     </Stack.Navigator>
 
 
