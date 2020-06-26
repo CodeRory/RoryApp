@@ -13,6 +13,8 @@ import AuthNavigator from './app/navigation/AuthNavigator';
 
 import MyAccount from './app/screens/MyAccount';
 
+import AddProduct from './app/screens/AddProduct';
+
 
 
 
@@ -25,7 +27,7 @@ export default function App() {
     <NavigationContainer>
 
      
-      <MyAccount />
+      <AddProduct />
     </NavigationContainer>
   );
 }
