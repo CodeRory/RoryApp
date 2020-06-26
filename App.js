@@ -27,7 +27,7 @@ export default function App() {
     <NavigationContainer>
 
      
-      <AddProduct />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
